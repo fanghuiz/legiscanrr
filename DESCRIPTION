@@ -1,0 +1,29 @@
+Package: legiscanrr
+Title: R package to work with the LegiScan API
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Fanghui",
+           family = "Zhao",
+           role = c("cre", "aut"),
+           email = "fanghui.z13@gmail.com")
+Maintainer: {{ Maintainer }}
+Description: The LegiScan API provides structured JSON
+    information for legislations in US states and Congress, including bill
+    detail, status, sponsors, full bill texts, roll call records and more.
+License: MIT + file LICENSE
+URL: https://github.com/fanghuiz/legiscanrr
+BugReports: {{ BugReports }}
+Imports: 
+    attempt,
+    curl,
+    data.table,
+    dplyr,
+    fs,
+    httr,
+    jsonlite,
+    magrittr,
+    progress,
+    purrr,
+    readtext
+Encoding: UTF-8
+LazyData: true

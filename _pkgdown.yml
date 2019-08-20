@@ -1,0 +1,19 @@
+destination: docs
+
+template:
+  params:
+    bootswatch: paper
+
+reference:
+- title: API functions
+  desc: Wrapper functions for LegiScan API operations
+  contents:
+  - starts_with("get_")
+- title: Data processing functions
+  desc: Parsing contents from json file to
+  contents:
+  - starts_with("parse_")
+- title: Helper
+  contents:
+  - '`find_json_path`'
+  - '`lookup_table`'
