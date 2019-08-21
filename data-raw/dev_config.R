@@ -19,13 +19,13 @@ my_desc$set("Authors@R",
             "person('Fanghui', 'Zhao', email = 'fanghui.z13@gmail.com', role = c('cre', 'aut'))")
 
 # Remove some author fields
-#my_desc$del("Maintainer")
+my_desc$del("Maintainer")
 
 # Set the version
 my_desc$set_version("0.0.0.9000")
 
 # Package title
-my_desc$set(Title = "R package to work with the LegiScan API")
+my_desc$set(Title = "API wrapper for LegiScan")
 
 # Package description
 my_desc$set(Description = "The LegiScan API provides structured JSON information
@@ -34,14 +34,14 @@ my_desc$set(Description = "The LegiScan API provides structured JSON information
 
 # The urls
 my_desc$set("URL", "https://github.com/fanghuiz/legiscanrr")
-#my_desc$set("BugReports", "http://that")
+my_desc$set("BugReports", "https://github.com/fanghuiz/legiscanrr")
 
 # Save everyting
 my_desc$write(file = "DESCRIPTION")
 
 use_mit_license(name = "Fanghui Zhao")
 use_lifecycle_badge("Experimental")
-use_readme_rmd()
+# use_readme_rmd()
 
 # Get the dependencies
 use_package("httr")
@@ -56,9 +56,9 @@ use_package("fs")
 use_package("progress")
 use_package("readtext")
 
-# use_package("tidyr")
-# use_package("checkmate")
-# use_package("tibble")
+use_package("tidyr")
+use_package("checkmate")
+use_package("tibble")
 
 
 # Clean your description

@@ -7,7 +7,7 @@
 parse_people(people_json)
 }
 \arguments{
-\item{bill_json}{Path to people json file}
+\item{people_json}{Path to people json file}
 }
 \value{
 list

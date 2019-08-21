@@ -6,15 +6,15 @@ Authors@R:
            family = "Zhao",
            role = c("cre", "aut"),
            email = "fanghui.z13@gmail.com")
-Maintainer: {{ Maintainer }}
 Description: The LegiScan API provides structured JSON
     information for legislations in US states and Congress, including bill
     detail, status, sponsors, full bill texts, roll call records and more.
 License: MIT + file LICENSE
 URL: https://github.com/fanghuiz/legiscanrr
-BugReports: {{ BugReports }}
+BugReports: https://github.com/fanghuiz/legiscanrr
 Imports: 
     attempt,
+    checkmate,
     curl,
     data.table,
     dplyr,
@@ -24,6 +24,8 @@ Imports:
     magrittr,
     progress,
     purrr,
-    readtext
+    readtext,
+    tibble,
+    tidyr
 Encoding: UTF-8
 LazyData: true

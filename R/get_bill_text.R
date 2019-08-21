@@ -1,9 +1,9 @@
 #' Wrapper for getBillText operation
 #'
-#' Return bill text and save to disk
+#' Return bill text json
 #'
 #' @param api_key LegiScan API key (required)
-#' @param bill_json
+#' @param doc_id Identifier for bill text document
 #'
 #' @import dplyr
 #' @import tidyr
@@ -16,70 +16,30 @@
 #' @return data.frame
 #'
 #' @export
-get_bill_text <- function(bill_json, api_key){
+get_bill_text <- function(api_key, doc_id){
 
-  # initialize progress bar
-  pb <- progress::progress_bar$new(
-    format = "  ♪┏(・o･)┛♪ downloading [:bar] :percent in :elapsed.",
-    total = length(bill_json), clear = FALSE, width= 60)
-  pb$tick(0)
-
-  call_api_text <- function(input_bill_json){
-
-    # Start counter
-    pb$tick()
-
-    # Import json
-    bill <- jsonlite::fromJSON(input_bill_json)
-
-    # Return NULL is no texts element exist
-    if (length(bill[["bill"]][["texts"]]) == 0) {
-
-      return(NULL)
-
-    } else {
-
-      # Get the unique id for bill text, to be used for API
-      doc_id <- bill[["bill"]][["texts"]][["doc_id"]]
-
-      # Generate API request url
-      text_url <- paste0("https://api.legiscan.com/?key=", api_key,
-                         "&op=getBillText&id=", doc_id)
-
-      # Find directory to save text json in. Same session directory as the associated bill
-      doc_dir <- fs::path_dir(input_bill_json) %>% fs::path_dir()
-      doc_dir <- paste0(doc_dir, "/text/")
-
-      # Create directory if does not exist
-      fs::dir_create(doc_dir)
-
-      # Send API request and get response
-      resp_text <- text_url %>%
-        purrr::map(httr::GET) %>%
-        purrr::map(httr::content)
-
-      # Write API response to local disk
-      text <- resp_text %>%
-        map(function(x){
-
-          # Check for API errors and send message
-          if(x[["status"]] == "ERROR"){
-            message(x[[2]])
-          } else {
-
-            # Create path to save the text.json in
-            file_path <- (paste0(doc_dir, x[["text"]][["doc_id"]], ".json"))
-            # Save as json
-            jsonlite::write_json(x[["text"]], path = file_path)
-          }
-        })
-    }
-    # End of inner function
+  # Stop if no api_key is given
+  if (missing(api_key)) {
+    stop("Must specify API key. Register for one at https://legiscan.com/legiscan")
   }
 
-  # Iterate over input bill json to download text json
-  bill_json %>%
-    purrr::walk(call_api_text)
+  # Chek for internet
+  check_internet()
 
-  # End of function
+  # Get the API response
+  resp <- httr::GET(
+    url = base_url,
+    query = list(key = api_key, op = "getBillText", id = doc_id))
+
+  # Get the content
+  content <- httr::content(resp)
+
+  # Check for errors in http status, http type, and API errors
+  check_http_status(resp)
+  check_API_response(content)
+
+  # Keep the inner element content
+  bill_text <- content[["text"]]
+
+  bill_text
 }

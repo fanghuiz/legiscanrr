@@ -10,8 +10,6 @@ get_bill_text(bill_json, api_key)
 \item{bill_json}{}
 
 \item{api_key}{LegiScan API key (required)}
-
-\item{doc_id}{Bill text doc_id}
 }
 \value{
 data.frame

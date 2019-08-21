@@ -7,7 +7,7 @@
 parse_rollcall_vote(vote_json)
 }
 \arguments{
-\item{bill_json}{Path to vote json file}
+\item{vote_json}{Path to vote json file}
 }
 \value{
 data.frame

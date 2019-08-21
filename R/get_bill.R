@@ -1,19 +1,21 @@
-#' Wrapper for getDatasetList operation
+#' Wrapper for getBill operation
 #'
-#' Returns a list of available datasets, with optional state and year filtering
+#' This operation returns the primary bill detail information including sponsors,
+#' committee references, full history, bill text and roll call information.
 #'
 #' @param api_key LegiScan API key (required)
-#' @param state State filter (optional)
-#' @param year Year filter (optional)
+#' @param bill_id Identifier for bill
 #'
-#' @import attempt
+#' @importFrom fs dir_create
+#' @import purrr
 #' @import httr
-#' @importFrom data.table rbindlist
+#' @import jsonlite
+#' @import utils
 #'
-#' @return data.frame
+#' @return List
 #'
 #' @export
-get_dataset_list <- function(api_key, state = NULL, year = NULL){
+get_bill <- function(api_key, bill_id){
 
   # Stop if no api_key is given
   if (missing(api_key)) {
@@ -26,7 +28,7 @@ get_dataset_list <- function(api_key, state = NULL, year = NULL){
   # Get the API response
   resp <- httr::GET(
     url = base_url,
-    query = list(key = api_key, op = "getDatasetList", state = state, year = year))
+    query = list(key = api_key, op = "getBill", id = bill_id))
 
   # Get the content
   content <- httr::content(resp)
@@ -36,8 +38,7 @@ get_dataset_list <- function(api_key, state = NULL, year = NULL){
   check_API_response(content)
 
   # Keep the inner element content
-  content <- content[["datasetlist"]]
+  content <- content[["bill"]]
 
   content
 }
-
