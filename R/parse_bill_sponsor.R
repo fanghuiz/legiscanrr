@@ -4,12 +4,11 @@
 #'
 #' @param bill_json Path to bill json file
 #'
-#' @import dplyr
-#' @import purrr
-#' @importFrom magrittr "%>%"
 #' @import jsonlite
-#' @importFrom tibble tibble as_tibble
-#' @importFrom data.table rbindlist
+#' @import progress
+#' @importFrom purrr keep
+#' @importFrom tibble as_tibble
+#' @importFrom data.table rbindlist setDF
 #'
 #' @return data.frame
 #'
@@ -18,18 +17,17 @@ parse_bill_sponsor <- function(bill_json){
 
   # initialize progress bar
   pb <- progress::progress_bar$new(
-    format = "  ༼ つ ◕_◕ ༽つ GIVE SPONSOR [:bar] :percent in :elapsed.",
+    format = "  parsing sponsors [:bar] :percent in :elapsed.",
     total = length(bill_json), clear = FALSE, width= 60)
   pb$tick(0)
 
-  extract_sponsor <- function(input_bill_json){
+  extract_sponsor <- function(input_bill){
 
     # Increment progress bar
     pb$tick()
 
     # Import json
-    input_bill <- input_bill_json %>%
-      jsonlite::fromJSON()
+    input_bill <- jsonlite::fromJSON(input_bill)
 
     # Keep inner element
     input_bill <- input_bill[["bill"]]
@@ -72,11 +70,11 @@ parse_bill_sponsor <- function(bill_json){
   }
 
   # Iterate over input json to decode text one by one
-  output_list <- bill_json %>%
-    purrr::map(extract_sponsor)
+  output_list <- lapply(bill_json, extract_sponsor)
 
-  output_df <- output_list %>%
-    data.table::rbindlist(fill = TRUE)
-  output_df
+  # Bind list into flat data frame
+  output_df <- data.table::rbindlist(output_list, fill = TRUE)
+  output_df  <- tibble::as_tibble(data.table::setDF(output_df))
+
   # End of function call
 }

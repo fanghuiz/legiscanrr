@@ -4,12 +4,11 @@
 #'
 #' @param vote_json Path to vote json file
 #'
-#' @import dplyr
-#' @import purrr
-#' @importFrom magrittr "%>%"
 #' @import jsonlite
-#' @importFrom tibble tibble as_tibble
-#' @importFrom data.table rbindlist
+#' @import progress
+#' @importFrom purrr keep
+#' @importFrom data.table rbindlist setDF
+#' @importFrom  tibble as_tibble
 #'
 #' @return data.frame
 #'
@@ -18,7 +17,7 @@ parse_rollcall_vote <- function(vote_json){
 
   # Initialize progress bar
   pb <- progress::progress_bar$new(
-    format = "  ༼ つ ◕_◕ ༽つ GIVE ROLLCALL [:bar] :percent in :elapsed.",
+    format = "  parsing roll call [:bar] :percent in :elapsed.",
     total = length(vote_json), clear = FALSE, width= 60)
   pb$tick(0)
 
@@ -27,8 +26,7 @@ parse_rollcall_vote <- function(vote_json){
     pb$tick()
 
     # Import json
-    input_vote <- input_vote_json %>%
-      jsonlite::fromJSON()
+    input_vote <- jsonlite::fromJSON(input_vote_json)
 
     # Keep inner element
     input_vote <- input_vote[["roll_call"]]
@@ -54,12 +52,11 @@ parse_rollcall_vote <- function(vote_json){
   }
 
   # Iterate over input json to decode text one by one
-  output_list <- vote_json %>%
-    purrr::map(extract_rollcall)
+  output_list <- lapply(vote_json, extract_rollcall)
 
-  output_df <- output_list %>%
-    data.table::rbindlist(fill = TRUE)
-  output_df
+  # Bind list into flat data frame
+  output_df <- data.table::rbindlist(output_list, fill = TRUE)
+  output_df  <- tibble::as_tibble(data.table::setDF(output_df))
   # End of function call
 }
 

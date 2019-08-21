@@ -4,11 +4,10 @@
 #'
 #' @param people_json Path to people json file
 #'
-#' @import dplyr
-#' @import purrr
-#' @importFrom magrittr "%>%"
 #' @import jsonlite
-#' @importFrom data.table rbindlist
+#' @import progress
+#' @importFrom data.table rbindlist setDF
+#' @importFrom  tibble as_tibble
 #'
 #' @return list
 #'
@@ -18,7 +17,7 @@ parse_people <- function(people_json){
 
   # Initialize progress bar
   pb <- progress::progress_bar$new(
-    format = "  ༼ つ ◕_◕ ༽つ GIVE PEOPLE [:bar] :percent in :elapsed.",
+    format = "  parsing people [:bar] :percent in :elapsed.",
     total = length(people_json), clear = FALSE, width= 60)
   pb$tick(0)
 
@@ -28,8 +27,7 @@ parse_people <- function(people_json){
     pb$tick()
 
     # Import json
-    input_people <- input_people_json %>%
-      jsonlite::fromJSON()
+    input_people <- jsonlite::fromJSON(input_people_json)
 
     # Keep inner element
     people_meta <- input_people[["person"]]
@@ -39,12 +37,11 @@ parse_people <- function(people_json){
   }
 
   # Iterate over input json to decode text one by one
-  output_list <- people_json %>%
-    purrr::map(extract_people_meta)
+  output_list <- lapply(people_json, extract_people_meta)
 
-  output_df <- output_list %>%
-    data.table::rbindlist(fill = TRUE)
-  output_df
+  # Bind list into flat data frame
+  output_df <- data.table::rbindlist(output_list, fill = TRUE)
+  output_df  <- tibble::as_tibble(data.table::setDF(output_df))
   # End of function call
 
 }
