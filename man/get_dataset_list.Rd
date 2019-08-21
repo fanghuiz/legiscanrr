@@ -4,7 +4,7 @@
 \alias{get_dataset_list}
 \title{Wrapper for getDatasetList operation}
 \usage{
-get_dataset_list(api_key, state, year)
+get_dataset_list(api_key, state = NULL, year = NULL)
 }
 \arguments{
 \item{api_key}{LegiScan API key (required)}

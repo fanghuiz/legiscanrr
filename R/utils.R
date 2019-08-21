@@ -1,9 +1,13 @@
 #' Helper functions
+#'
+#' @name utils
+NULL
 
-#' Check for internet
+#' Check for internet connection
 #'
 #' @importFrom attempt stop_if_not
 #' @importFrom curl has_internet
+#' @rdname utils
 check_internet <- function(){
   attempt::stop_if_not(.x = curl::has_internet(),
                        msg = "Please check your internet connection")
@@ -12,7 +16,9 @@ check_internet <- function(){
 
 #' Check http status
 #'
+#' @importFrom attempt stop_if_not
 #' @importFrom httr status_code
+#' @rdname utils
 check_http_status <- function(resp){
   attempt::stop_if_not(
     .x = httr::status_code(resp),
@@ -31,6 +37,8 @@ check_http_status <- function(resp){
 
 #' Check API request errors
 #'
+#' @importFrom attempt stop_if
+#' @rdname utils
 check_API_response <- function(content){
   attempt::stop_if(
     .x = content$status,
@@ -39,7 +47,7 @@ check_API_response <- function(content){
 }
 
 
-#' URLs for API requests
+# URLs for API requests
 base_url <- "https://api.legiscan.com/"
 
 

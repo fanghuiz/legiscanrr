@@ -6,13 +6,10 @@
 #' either via API request or direct download of the bulk export.
 #'
 #' @param base_dir Character vector of the directory where the json files are stored locally
-#' @param file_type Character string. Accepts "bill", "people", "vote", or "text"/
+#' @param file_type Character string. Accepts "bill", "people", "vote", or "text"
 #'
-#' @import dplyr
-#' @import purrr
-#' @importFrom magrittr "%>%"
-#' @import checkmate
-#' @import fs
+#' @importFrom checkmate assert_directory_exists, assert_choice
+#' @importFrom fs dir_ls
 #'
 #' @return A vector of paths to .json file
 #'

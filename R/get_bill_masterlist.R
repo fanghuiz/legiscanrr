@@ -6,9 +6,9 @@
 #' @param state State abr
 #' @param session_id Session identifier
 #'
-#' @import attempt
 #' @import httr
-#' @importFrom data.table rbindlist
+#' @importFrom data.table rbindlist setDF
+#' @importFrom tibble as_tibble
 #'
 #' @return Data frame of bill information, including bill_id and bill number.
 #'
@@ -24,7 +24,7 @@
 #' }
 #'
 #' @export
-get_bill_masterlist <- function(api_key, state = NULL, session_id = NULL) {
+get_bill_masterlist <- function(state = NULL, session_id = NULL, api_key) {
 
   # Stop if no api_key is given
   if (missing(api_key)) {
@@ -66,6 +66,7 @@ get_bill_masterlist <- function(api_key, state = NULL, session_id = NULL) {
 
   # Bind list of bills into flat data frame
   bill_df <- data.table::rbindlist(content, fill = TRUE)
+  bill_df <- tibble::as_tibble(data.table::setDF(bill_df))
 
   # Combine session id back into bills df
   bill_df$session_id <- session$session_id

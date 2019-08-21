@@ -24,7 +24,7 @@ This operation returns a master list of bills in the given session or current st
 # One state
 get_bill_masterlist(api_key = key, state = "AK")
 
-# Multiple states, use iterators, e.g. \\code{[base]{lapply}} \\code{\\link[purrr]{map}}
+# Multiple states, use iterators, e.g. lapply() or map()
 lapply(state_list, function(x){
   get_bill_masterlist(api_key = key, state = x)
   })

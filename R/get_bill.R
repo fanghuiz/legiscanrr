@@ -6,16 +6,12 @@
 #' @param api_key LegiScan API key (required)
 #' @param bill_id Identifier for bill
 #'
-#' @importFrom fs dir_create
-#' @import purrr
 #' @import httr
-#' @import jsonlite
-#' @import utils
 #'
 #' @return List
 #'
 #' @export
-get_bill <- function(api_key, bill_id){
+get_bill <- function(bill_id, api_key){
 
   # Stop if no api_key is given
   if (missing(api_key)) {

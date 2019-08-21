@@ -5,18 +5,12 @@
 #' @param api_key LegiScan API key (required)
 #' @param doc_id Identifier for bill text document
 #'
-#' @import dplyr
-#' @import tidyr
-#' @import purrr
-#' @import magrittr
-#' @importFrom magrittr "%>%"
 #' @import httr
-#' @import fs
 #'
 #' @return data.frame
 #'
 #' @export
-get_bill_text <- function(api_key, doc_id){
+get_bill_text <- function(doc_id, api_key){
 
   # Stop if no api_key is given
   if (missing(api_key)) {

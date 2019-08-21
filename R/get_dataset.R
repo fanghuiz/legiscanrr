@@ -8,15 +8,15 @@
 #' Default to working directory "."
 #'
 #' @importFrom fs dir_create
-#' @import purrr
+#' @importFrom purrr flatten
+#' @importFrom utils unzip
 #' @import httr
 #' @import jsonlite
-#' @import utils
 #'
 #' @return NULL. No return value. Dataset will be unzipped to local disk.
 #'
 #' @export
-get_dataset <- function(api_key, dataset_list, save_to_dir = "."){
+get_dataset <- function(dataset_list, save_to_dir = ".", api_key){
 
   # Stop if no api_key is given
   if (missing(api_key)) {

@@ -6,14 +6,12 @@
 #' @param state State filter (optional)
 #' @param year Year filter (optional)
 #'
-#' @import attempt
 #' @import httr
-#' @importFrom data.table rbindlist
 #'
 #' @return data.frame
 #'
 #' @export
-get_dataset_list <- function(api_key, state = NULL, year = NULL){
+get_dataset_list <- function(state = NULL, year = NULL, api_key){
 
   # Stop if no api_key is given
   if (missing(api_key)) {
@@ -35,9 +33,9 @@ get_dataset_list <- function(api_key, state = NULL, year = NULL){
   check_http_status(resp)
   check_API_response(content)
 
-  # Keep the inner element content
-  content <- content[["datasetlist"]]
+  # Keep the inner element datasetlist
+  dataset_list <- content[["datasetlist"]]
 
-  content
+  dataset_list
 }
 

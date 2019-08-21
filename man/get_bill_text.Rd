@@ -4,16 +4,16 @@
 \alias{get_bill_text}
 \title{Wrapper for getBillText operation}
 \usage{
-get_bill_text(bill_json, api_key)
+get_bill_text(api_key, doc_id)
 }
 \arguments{
-\item{bill_json}{}
-
 \item{api_key}{LegiScan API key (required)}
+
+\item{doc_id}{Identifier for bill text document}
 }
 \value{
 data.frame
 }
 \description{
-Return bill text and save to disk
+Return bill text json
 }
