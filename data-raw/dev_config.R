@@ -1,5 +1,5 @@
 ## Configuration for legiscanrr
-usethis::use_data("dev_config")
+# usethis::use_data("dev_config")
 
 library(devtools)
 library(usethis)
@@ -28,37 +28,40 @@ my_desc$set_version("0.0.0.9000")
 my_desc$set(Title = "API wrapper for LegiScan")
 
 # Package description
-my_desc$set(Description = "The LegiScan API provides structured JSON information
-            for legislations in US states and Congress, including bill detail,
-            status, sponsors, full bill texts, roll call records and more.")
+my_desc$set(Description = "Tools to interact with the LegiScan API, retrieving
+            and parsing JSON information for legislations in US states and Congress,
+            such as bill details, sponsors, full bill texts, roll call records and more.")
 
 # The urls
 my_desc$set("URL", "https://github.com/fanghuiz/legiscanrr")
-my_desc$set("BugReports", "https://github.com/fanghuiz/legiscanrr")
+my_desc$set("BugReports", "https://github.com/fanghuiz/legiscanrr/issues")
 
 # Save everyting
 my_desc$write(file = "DESCRIPTION")
 
 use_mit_license(name = "Fanghui Zhao")
-use_lifecycle_badge("Experimental")
+# use_lifecycle_badge("Experimental")
 # use_readme_rmd()
 
 # Get the dependencies
 use_package("httr")
 use_package("jsonlite")
-use_package("curl")
-use_package("attempt")
-use_package("purrr")
-use_package("dplyr")
-use_package("data.table")
-use_package("magrittr")
-use_package("fs")
-use_package("progress")
-use_package("readtext")
 
-use_package("tidyr")
-use_package("checkmate")
-use_package("tibble")
+# use_package("tibble")
+
+
+# use_package("readtext")
+#
+# use_package("curl")
+# use_package("attempt")
+# use_package("purrr")
+# use_package("dplyr")
+# use_package("data.table")
+# use_package("magrittr")
+# use_package("fs")
+# use_package("progress")
+# use_package("tidyr")
+# use_package("checkmate")
 
 
 # Clean your description

@@ -4,5 +4,5 @@
 #'
 #' @author Author name
 #' @docType package
-#' @name legiscanrr
+#' @name legiscanrr-package
 "_PACKAGE"
