@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Wrapper for getDataset operation — get_dataset" />
 
 <meta property="og:description" content="Unzip a single ZIP archive of the requested session dataset." />
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">legiscanrr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -76,6 +78,9 @@
   </a>
 </li>
 <li>
+  <a href="../articles/legiscanrr.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -86,14 +91,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/example.html">example</a>
+      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+    </li>
+    <li>
+      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
     </li>
   </ul>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/fanghuiz/legiscanrr">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -107,7 +120,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Wrapper for getDataset operation</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fanghuiz/legiscanrr/blob/master/R/get_dataset.R'><code>R/get_dataset.R</code></a></small>
     <div class="hidden name"><code>get_dataset.Rd</code></div>
     </div>
 
@@ -117,22 +130,24 @@
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_dataset</span>(<span class='no'>api_key</span>, <span class='no'>dataset_list_object</span>, <span class='no'>save_data_to</span>)</pre>
+    <pre class="usage"><span class='fu'>get_dataset</span>(<span class='no'>dataset_list</span>, <span class='kw'>save_to_dir</span> <span class='kw'>=</span> <span class='st'>"."</span>,
+  <span class='kw'>api_key</span> <span class='kw'>=</span> <span class='fu'><a href='legiscan_api_key.html'>legiscan_api_key</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>api_key</th>
-      <td><p>LegiScan API key (required)</p></td>
-    </tr>
-    <tr>
-      <th>dataset_list_object</th>
+      <th>dataset_list</th>
       <td><p>Object returned from get_dataset_list()</p></td>
     </tr>
     <tr>
-      <th>save_data_to</th>
-      <td></td>
+      <th>save_to_dir</th>
+      <td><p>Local directory to save the unzipped dataset.
+Default to working directory "."</p></td>
+    </tr>
+    <tr>
+      <th>api_key</th>
+      <td><p>Your LegiScan API key (see [legiscan_api_key()])</p></td>
     </tr>
     </table>
     
@@ -155,7 +170,7 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Fanghui Zhao.</p>
 </div>
 
 <div class="pkgdown">

@@ -4,14 +4,15 @@
 \alias{get_bill_masterlist}
 \title{Wrapper for getMasterList operation}
 \usage{
-get_bill_masterlist(state = NULL, session_id = NULL, api_key)
+get_bill_masterlist(state = NULL, session_id = NULL,
+  api_key = legiscan_api_key())
 }
 \arguments{
 \item{state}{State abr}
 
 \item{session_id}{Session identifier}
 
-\item{api_key}{LegiScan API key (required)}
+\item{api_key}{Your LegiScan API key (see [legiscan_api_key()])}
 }
 \value{
 Data frame of bill information, including bill_id and bill number.
@@ -22,12 +23,11 @@ This operation returns a master list of bills in the given session or current st
 \examples{
 \dontrun{
 # One state
-get_bill_masterlist(api_key = key, state = "AK")
+get_bill_masterlist(state = "PA")
 
 # Multiple states, use iterators, e.g. lapply() or map()
-lapply(state_list, function(x){
-  get_bill_masterlist(api_key = key, state = x)
-  })
+state_list <- c("AR", "AZ")
+bills_current <- lapply(state_list, get_bill_masterlist)
 }
 
 }

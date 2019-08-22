@@ -4,7 +4,8 @@
 \alias{get_dataset}
 \title{Wrapper for getDataset operation}
 \usage{
-get_dataset(dataset_list, save_to_dir = ".", api_key)
+get_dataset(dataset_list, save_to_dir = ".",
+  api_key = legiscan_api_key())
 }
 \arguments{
 \item{dataset_list}{Object returned from get_dataset_list()}
@@ -12,7 +13,7 @@ get_dataset(dataset_list, save_to_dir = ".", api_key)
 \item{save_to_dir}{Local directory to save the unzipped dataset.
 Default to working directory "."}
 
-\item{api_key}{LegiScan API key (required)}
+\item{api_key}{Your LegiScan API key (see [legiscan_api_key()])}
 }
 \value{
 NULL. No return value. Dataset will be unzipped to local disk.

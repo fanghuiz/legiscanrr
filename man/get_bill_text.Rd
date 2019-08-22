@@ -4,12 +4,12 @@
 \alias{get_bill_text}
 \title{Wrapper for getBillText operation}
 \usage{
-get_bill_text(doc_id, api_key)
+get_bill_text(doc_id, api_key = legiscan_api_key())
 }
 \arguments{
 \item{doc_id}{Identifier for bill text document}
 
-\item{api_key}{LegiScan API key (required)}
+\item{api_key}{Your LegiScan API key (see [legiscan_api_key()])}
 }
 \value{
 data.frame

@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Function reference" />
 
 
@@ -60,7 +62,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">legiscanrr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -73,6 +75,9 @@
   </a>
 </li>
 <li>
+  <a href="../articles/legiscanrr.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -83,14 +88,22 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/example.html">example</a>
+      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+    </li>
+    <li>
+      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
     </li>
   </ul>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/fanghuiz/legiscanrr">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -117,11 +130,23 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-api-functions" class="hasAnchor"><a href="#section-api-functions" class="anchor"></a>API functions</h2>
-          <p class="section-desc"><p>Wrapper functions for LegiScan API operations</p></p>
+          <h2 id="section-api-wrapper-functions" class="hasAnchor"><a href="#section-api-wrapper-functions" class="anchor"></a>API wrapper functions</h2>
+          <p class="section-desc"><p>Wrapper functions for various LegiScan API operations</p></p>
         </th>
       </tr>
       <tr>
+        
+        <td>
+          <p><code><a href="get_bill.html">get_bill()</a></code> </p>
+        </td>
+        <td><p>Wrapper for getBill operation</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_bill_masterlist.html">get_bill_masterlist()</a></code> </p>
+        </td>
+        <td><p>Wrapper for getMasterList operation</p></td>
+      </tr><tr>
         
         <td>
           <p><code><a href="get_bill_text.html">get_bill_text()</a></code> </p>
@@ -139,18 +164,12 @@
           <p><code><a href="get_dataset_list.html">get_dataset_list()</a></code> </p>
         </td>
         <td><p>Wrapper for getDatasetList operation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lookup_table.html">lookup_table</a></code> </p>
-        </td>
-        <td><p>Lookup table</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-parse-json-data" class="hasAnchor"><a href="#section-parse-json-data" class="anchor"></a>Parse JSON data</h2>
-          <p class="section-desc"><p>Extracting content from json to</p></p>
+          <h2 id="section-data-processing-functions" class="hasAnchor"><a href="#section-data-processing-functions" class="anchor"></a>Data processing functions</h2>
+          <p class="section-desc"><p>Parsing the JSON files, returns flat dataframes</p></p>
         </th>
       </tr>
       <tr>
@@ -174,12 +193,6 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="parse_bill_text.html">parse_bill_text()</a></code> </p>
-        </td>
-        <td><p>Parse bill text json and decode from base64 to plain text</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="parse_people.html">parse_people()</a></code> </p>
         </td>
         <td><p>Parse people JSON files</p></td>
@@ -199,16 +212,42 @@
     </tbody><tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-helper" class="hasAnchor"><a href="#section-helper" class="anchor"></a>Helper</h2>
+          <h2 id="section-helper-functions" class="hasAnchor"><a href="#section-helper-functions" class="anchor"></a>Helper functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
+          <p><code><a href="decode_bill_text.html">decode_bill_text()</a></code> </p>
+        </td>
+        <td><p>Decode bill text from base64 to plain text</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="find_json_path.html">find_json_path()</a></code> </p>
         </td>
         <td><p>Find paths to local JSON files</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="legiscan_api_key.html">legiscan_api_key()</a></code> </p>
+        </td>
+        <td><p>Get or set LEGISCAN_API_KEY value</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="lookup_table.html">lookup_table</a></code> </p>
+        </td>
+        <td><p>Lookup table</p></td>
       </tr>
     </tbody>
     </table>
@@ -217,16 +256,17 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-api-functions">API functions</a></li>
-      <li><a href="#section-parse-json-data">Parse JSON data</a></li>
-      <li><a href="#section-helper">Helper</a></li>
+      <li><a href="#section-api-wrapper-functions">API wrapper functions</a></li>
+      <li><a href="#section-data-processing-functions">Data processing functions</a></li>
+      <li><a href="#section-helper-functions">Helper functions</a></li>
+      <li><a href="#section-data">Data</a></li>
     </ul>
   </div>
 </div>
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Fanghui Zhao.</p>
 </div>
 
 <div class="pkgdown">

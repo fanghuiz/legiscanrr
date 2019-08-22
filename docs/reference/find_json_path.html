@@ -30,6 +30,8 @@
 
 
 
+  <link href="../extra.css" rel="stylesheet">
+  
 <meta property="og:title" content="Find paths to local JSON files — find_json_path" />
 
 <meta property="og:description" content="Helper function to find local paths to json files before using the
@@ -66,7 +68,7 @@ either via API request or direct download of the bulk export." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">legiscanrr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -79,6 +81,9 @@ either via API request or direct download of the bulk export." />
   </a>
 </li>
 <li>
+  <a href="../articles/legiscanrr.html">Get started</a>
+</li>
+<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -89,14 +94,22 @@ either via API request or direct download of the bulk export." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/example.html">example</a>
+      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+    </li>
+    <li>
+      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
     </li>
   </ul>
 </li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://github.com/fanghuiz/legiscanrr">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -110,7 +123,7 @@ either via API request or direct download of the bulk export." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Find paths to local JSON files</h1>
-    
+    <small class="dont-index">Source: <a href='https://github.com/fanghuiz/legiscanrr/blob/master/R/find_json_path.R'><code>R/find_json_path.R</code></a></small>
     <div class="hidden name"><code>find_json_path.Rd</code></div>
     </div>
 
@@ -134,7 +147,7 @@ either via API request or direct download of the bulk export.</p>
     </tr>
     <tr>
       <th>file_type</th>
-      <td><p>Character string. Accepts "bill", "people", "vote", or "text"/</p></td>
+      <td><p>Character string. Accepts "bill", "people", "vote", or "text"</p></td>
     </tr>
     </table>
     
@@ -157,7 +170,7 @@ either via API request or direct download of the bulk export.</p>
 
       <footer>
       <div class="copyright">
-  <p>Developed by The package maintainer.</p>
+  <p>Developed by Fanghui Zhao.</p>
 </div>
 
 <div class="pkgdown">

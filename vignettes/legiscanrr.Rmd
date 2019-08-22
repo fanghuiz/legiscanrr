@@ -1,5 +1,5 @@
 ---
-title: "example"
+title: "Introduction to legiscanrr"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{example}
@@ -14,4 +14,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-TBD
+The goal of legiscanrr is to ...
+
+* Get bulk export
+* Get specific info
+
+See here xxxx for how to parse JSON files from bulk export.
+
+
+## Get Dataset Bulk Export
+
+
+## Get Bill details

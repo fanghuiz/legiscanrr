@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • legiscanrr</title>
+<title>Get or set LEGISCAN_API_KEY value — legiscan_api_key • legiscanrr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,7 +32,14 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Get or set LEGISCAN_API_KEY value — legiscan_api_key" />
+
+<meta property="og:description" content="The API wrapper functions in this package all rely on a LegiScan API
+key residing in the environment variable LEGISCAN_API_KEY. Call this
+function at the beginning of a new session to set the key, or enter
+`file.edit(&quot;~/.Renviron&quot;)` in the console and edit the file
+`LEGISCAN_API_KEY = &quot;you_api_key&quot;` to set key on your local machine." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -49,7 +56,7 @@
   </head>
 
   <body>
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -116,19 +123,46 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Get or set LEGISCAN_API_KEY value</h1>
+    <small class="dont-index">Source: <a href='https://github.com/fanghuiz/legiscanrr/blob/master/R/legiscan_api_key.R'><code>R/legiscan_api_key.R</code></a></small>
+    <div class="hidden name"><code>legiscan_api_key.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <ul>
-        <li><a href="howto-bill-text.html">How to Get Bill Full Text</a></li>
-        <li><a href="howto-parse-json.html">How to parsing downloaded JSON files</a></li>
-        <li><a href="legiscanrr.html">Introduction to legiscanrr</a></li>
-      </ul>
+    <div class="ref-description">
+    
+    <p>The API wrapper functions in this package all rely on a LegiScan API
+key residing in the environment variable <code>LEGISCAN_API_KEY</code>. Call this
+function at the beginning of a new session to set the key, or enter
+`<code><a href='https://www.rdocumentation.org/packages/utils/topics/file.edit'>file.edit("~/.Renviron")</a></code>` in the console and edit the file
+`<code>LEGISCAN_API_KEY = "you_api_key"</code>` to set key on your local machine.</p>
+    
     </div>
+
+    <pre class="usage"><span class='fu'>legiscan_api_key</span>(<span class='kw'>set_new</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>set_new</th>
+      <td><p>force setting a new LegiScan API key for the current environment? Default is FALSE.</p></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>atomic character vector containing the LegiScan API key</p>
+    
+
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
+
   </div>
 </div>
 
