@@ -2,10 +2,10 @@
 #'
 #' Unzip a single ZIP archive of the requested session dataset.
 #'
-#' @param api_key LegiScan API key (required)
 #' @param dataset_list Object returned from get_dataset_list()
 #' @param save_to_dir Local directory to save the unzipped dataset.
 #' Default to working directory "."
+#' @param api_key Your LegiScan API key (see [legiscan_api_key()])
 #'
 #' @importFrom fs dir_create
 #' @importFrom purrr flatten
@@ -16,12 +16,7 @@
 #' @return NULL. No return value. Dataset will be unzipped to local disk.
 #'
 #' @export
-get_dataset <- function(dataset_list, save_to_dir = ".", api_key){
-
-  # Stop if no api_key is given
-  if (missing(api_key)) {
-    stop("Must specify API key. Register for one at https://legiscan.com/legiscan")
-  }
+get_dataset <- function(dataset_list, save_to_dir = ".", api_key = legiscan_api_key()){
 
   # Create directory to save the dataset
   fs::dir_create(save_to_dir)

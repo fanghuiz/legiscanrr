@@ -4,14 +4,14 @@
 \alias{get_bill_masterlist}
 \title{Wrapper for getMasterList operation}
 \usage{
-get_bill_masterlist(api_key, state = NULL, session_id = NULL)
+get_bill_masterlist(state = NULL, session_id = NULL, api_key)
 }
 \arguments{
-\item{api_key}{LegiScan API key (required)}
-
 \item{state}{State abr}
 
 \item{session_id}{Session identifier}
+
+\item{api_key}{LegiScan API key (required)}
 }
 \value{
 Data frame of bill information, including bill_id and bill number.

@@ -16,7 +16,7 @@ check_API_response(content)
 \description{
 Helper functions
 
-Check for internet
+Check for internet connection
 
 Check http status
 

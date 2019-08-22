@@ -12,7 +12,7 @@ Wrapper functions to get json data from LegiScan API, and cleaning etc
 Useful links:
 \itemize{
   \item \url{https://github.com/fanghuiz/legiscanrr}
-  \item Report bugs at \url{https://github.com/fanghuiz/legiscanrr}
+  \item Report bugs at \url{https://github.com/fanghuiz/legiscanrr/issues}
 }
 
 }

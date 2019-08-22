@@ -4,14 +4,14 @@
 \alias{get_dataset_list}
 \title{Wrapper for getDatasetList operation}
 \usage{
-get_dataset_list(api_key, state = NULL, year = NULL)
+get_dataset_list(state = NULL, year = NULL, api_key)
 }
 \arguments{
-\item{api_key}{LegiScan API key (required)}
-
 \item{state}{State filter (optional)}
 
 \item{year}{Year filter (optional)}
+
+\item{api_key}{LegiScan API key (required)}
 }
 \value{
 data.frame

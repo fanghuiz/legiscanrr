@@ -9,7 +9,7 @@ find_json_path(base_dir, file_type)
 \arguments{
 \item{base_dir}{Character vector of the directory where the json files are stored locally}
 
-\item{file_type}{Character string. Accepts "bill", "people", "vote", or "text"/}
+\item{file_type}{Character string. Accepts "bill", "people", "vote", or "text"}
 }
 \value{
 A vector of paths to .json file

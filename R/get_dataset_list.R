@@ -2,21 +2,16 @@
 #'
 #' Returns a list of available datasets, with optional state and year filtering
 #'
-#' @param api_key LegiScan API key (required)
 #' @param state State filter (optional)
 #' @param year Year filter (optional)
+#' @param api_key Your LegiScan API key (see [legiscan_api_key()])
 #'
 #' @import httr
 #'
 #' @return data.frame
 #'
 #' @export
-get_dataset_list <- function(state = NULL, year = NULL, api_key){
-
-  # Stop if no api_key is given
-  if (missing(api_key)) {
-    stop("Must specify API key. Register for one at https://legiscan.com/legiscan")
-  }
+get_dataset_list <- function(state = NULL, year = NULL, api_key = legiscan_api_key()){
 
   # Chek for internet
   check_internet()
@@ -29,7 +24,7 @@ get_dataset_list <- function(state = NULL, year = NULL, api_key){
   # Get the content
   content <- httr::content(resp)
 
-  # Check for errors in http status, http type, and API errors
+  # Check for errors in http status, and API errors
   check_http_status(resp)
   check_API_response(content)
 

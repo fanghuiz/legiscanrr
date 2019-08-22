@@ -45,11 +45,11 @@ decode_bill_text <- function(bill_text){
   writeBin(text_bin, tmp)
 
   # Read in from temp file as plain text
-  text_decode <- readtext::readtext(tmp)
-  text_decode <- text_decoded[["text"]]
+  text_decoded <- readtext::readtext(tmp)
+  text_decoded <- text_decoded[["text"]]
 
   # Return a dataframe with decoded texts added in
   output_bill_text <- tibble::as_tibble(input_bill_text)
-  output_bill_text$text_decode <- text_decode
+  output_bill_text$text_decoded <- text_decoded
   output_bill_text
 }

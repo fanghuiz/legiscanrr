@@ -3,20 +3,15 @@
 #' This operation returns the primary bill detail information including sponsors,
 #' committee references, full history, bill text and roll call information.
 #'
-#' @param api_key LegiScan API key (required)
 #' @param bill_id Identifier for bill
+#' @param api_key Your LegiScan API key (see [legiscan_api_key()])
 #'
 #' @import httr
 #'
 #' @return List
 #'
 #' @export
-get_bill <- function(bill_id, api_key){
-
-  # Stop if no api_key is given
-  if (missing(api_key)) {
-    stop("Must specify API key. Register for one at https://legiscan.com/legiscan")
-  }
+get_bill <- function(bill_id, api_key = legiscan_api_key()){
 
   # Chek for internet
   check_internet()

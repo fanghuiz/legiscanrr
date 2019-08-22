@@ -4,12 +4,12 @@
 \alias{get_bill}
 \title{Wrapper for getBill operation}
 \usage{
-get_bill(api_key, bill_id)
+get_bill(bill_id, api_key)
 }
 \arguments{
-\item{api_key}{LegiScan API key (required)}
-
 \item{bill_id}{Identifier for bill}
+
+\item{api_key}{LegiScan API key (required)}
 }
 \value{
 List

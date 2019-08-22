@@ -2,9 +2,9 @@
 #'
 #' This operation returns a master list of bills in the given session or current state session.
 #'
-#' @param api_key LegiScan API key (required)
 #' @param state State abr
 #' @param session_id Session identifier
+#' @param api_key Your LegiScan API key (see [legiscan_api_key()])
 #'
 #' @import httr
 #' @importFrom data.table rbindlist setDF
@@ -15,21 +15,15 @@
 #' @examples
 #' \dontrun{
 #' # One state
-#' get_bill_masterlist(api_key = key, state = "AK")
+#' get_bill_masterlist(state = "PA")
 #'
 #' # Multiple states, use iterators, e.g. lapply() or map()
-#' lapply(state_list, function(x){
-#'   get_bill_masterlist(api_key = key, state = x)
-#'   })
+#' state_list <- c("AR", "AZ")
+#' bills_current <- lapply(state_list, get_bill_masterlist)
 #' }
 #'
 #' @export
-get_bill_masterlist <- function(state = NULL, session_id = NULL, api_key) {
-
-  # Stop if no api_key is given
-  if (missing(api_key)) {
-    stop("Must provide API key. Register for one at https://legiscan.com/legiscan")
-  }
+get_bill_masterlist <- function(state = NULL, session_id = NULL, api_key = legiscan_api_key()) {
 
   # Stop if no state or session_id
   if (is.null(state) & is.null(session_id)){
