@@ -4,16 +4,28 @@
 #'
 #' @param bill_text object returned from get_bill_text()
 #'
-#' @import jsonlite
 #' @import readtext
 #' @importFrom tibble as_tibble
+#' @importFrom jsonlite base64_dec fromJSON
+#' @importFrom assertthat has_extension
 #'
 #' @return data frame of 10 columns
 #'
 #' @export
 decode_bill_text <- function(bill_text){
 
-  input_bill_text <- bill_text
+  # Check whether input is list returned from API or local path to json
+  if (any(class(bill_text) == "billText")) {
+    # As is if is API return
+    input_bill_text <- bill_text
+    input_bill_text
+  } else if (assertthat::has_extension(bill_text, "json")) {
+    # Import if is local json
+    input_bill_text <- jsonlite::fromJSON(bill_text)
+    input_bill_text
+  }
+
+  #input_bill_text <- bill_text
 
   # Find correct file extension
   if(input_bill_text[["mime"]] == "text/html"){

@@ -44,6 +44,7 @@ parse_person_vote <- function(vote_json){
   # Bind list into flat data frame
   output_df <- data.table::rbindlist(output_list, fill = TRUE)
   output_df  <- tibble::as_tibble(data.table::setDF(output_df))
+  output_df
   # End of function call
 }
 

@@ -2,10 +2,10 @@
 #'
 #' Import bill json and parse
 #'
-#' @param bill_json Path to bill json file
+#' @param bill Path to bill json file or bill list
 #'
-#' @import jsonlite
-#' @import progress
+#' @importFrom jsonlite fromJSON
+#' @importFrom progress progress_bar
 #' @importFrom purrr keep compact flatten_df
 #' @importFrom data.table rbindlist setDF
 #' @importFrom tibble as_tibble
@@ -14,12 +14,12 @@
 #'
 #' @export
 #'
-parse_bill <- function(bill_json){
+parse_bill <- function(bill){
 
   # Initialize progress bar
   pb <- progress::progress_bar$new(
     format = "  parsing bills [:bar] :percent in :elapsed.",
-    total = length(bill_json), clear = FALSE, width = 60)
+    total = length(bill), clear = FALSE, width = 60)
   pb$tick(0)
 
   # Inner function to extract meta data from single bill
@@ -28,18 +28,19 @@ parse_bill <- function(bill_json){
     # Increment progress bar
     pb$tick()
 
-    # # Check if input is list of path to local json
-    # if (is.list(input_bill)) {
-    #   input_bill <- input_bill
-    # } else if (is.character(input_bill)) {
-    #   # Import json
-    #   input_bill <- jsonlite::fromJSON(input_bill)
-    #   input_bill <- input_bill[["bill"]]
-    # }
+    # Check if input is class `bill` or json file
+    input_class <- check_input_class(input_bill, "bill")
 
-    # Import json
-    input_bill <- jsonlite::fromJSON(input_bill)
-    input_bill <- input_bill[["bill"]]
+    # As-is if input is list returned from API
+    if (input_class == "bill") {
+      input_bill <- input_bill
+    }
+
+    # Import if input is local json file
+    if (input_class == "json") {
+      input_bill <- jsonlite::fromJSON(input_bill)
+      input_bill <- input_bill[["bill"]]
+    }
 
     elements_single <- c("bill_id",
                          "change_hash",
@@ -77,12 +78,19 @@ parse_bill <- function(bill_json){
     bill_meta
   }
 
+  # If input is single bill object
+  if (class(bill)[1] == "bill") {
+    output_df <- extract_bill_meta(bill)
+    output_df
+  }
   # Iterate over input bill list to extract meta data from each one
-  output_list <- lapply(bill_json, extract_bill_meta)
+  else {
+    output_list <- lapply(bill, extract_bill_meta)
 
-  # Bind list into flat data frame
-  output_df <- data.table::rbindlist(output_list, fill = TRUE)
-  output_df  <- tibble::as_tibble(data.table::setDF(output_df))
-
+    # Bind list into flat data frame
+    output_df <- data.table::rbindlist(output_list, fill = TRUE)
+    output_df  <- tibble::as_tibble(data.table::setDF(output_df))
+    output_df
+  }
   # End of function call
 }

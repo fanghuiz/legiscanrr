@@ -8,7 +8,7 @@
 #' @param base_dir Character vector of the directory where the json files are stored locally
 #' @param file_type Character string. Accepts "bill", "people", "vote", or "text"
 #'
-#' @importFrom checkmate assert_directory_exists assert_choice
+#' @import assertthat
 #' @importFrom fs dir_ls
 #'
 #' @return A vector of paths to .json file
@@ -17,20 +17,16 @@
 find_json_path <- function(base_dir, file_type){
 
   # Check if directory exists
-  checkmate::assert_directory_exists(base_dir)
+  assertthat::is.dir(base_dir)
 
   # Check if file_type input is valid
-  checkmate::assert_choice(file_type,
-                           choices = c("bill", "people", "vote", "text"))
+  assertthat::assert_that(
+    file_type %in% c("bill", "people", "vote", "text"),
+    msg = "file_type must of one of the following: 'bill', 'people, 'vote', 'text'"
+  )
 
-  # Define patterns to match file name
+  # Define patterns to match file name xxx/file_type/xxx.json
   pattern <- paste0("(", file_type, ")", ".*?(json)")
-
-  # Find first layer sub-folders
-  # sub_folder <- fs::dir_ls(path = base_path)
-  #
-  # path <- sub_folder %>%
-  #   purrr::map(fs::dir_ls, recurse = TRUE, regexp = pattern)
 
   path <-  fs::dir_ls(base_dir, recurse = TRUE, regexp = pattern)
 

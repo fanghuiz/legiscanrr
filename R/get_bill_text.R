@@ -30,5 +30,7 @@ get_bill_text <- function(doc_id, api_key = legiscan_api_key()){
   # Keep the inner element content
   bill_text <- content[["text"]]
 
+  class(bill_text) <- c("billText", class(bill_text))
+
   bill_text
 }

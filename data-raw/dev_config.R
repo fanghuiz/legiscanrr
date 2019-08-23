@@ -45,8 +45,9 @@ use_mit_license(name = "Fanghui Zhao")
 
 # Get the dependencies
 use_package("httr")
-use_package("jsonlite")
+use_package("assertthat")
 
+# use_package("jsonlite")
 # use_package("tibble")
 
 

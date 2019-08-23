@@ -29,7 +29,9 @@ get_bill <- function(bill_id, api_key = legiscan_api_key()){
   check_API_response(content)
 
   # Keep the inner element content
-  content <- content[["bill"]]
+  bill <- content[["bill"]]
 
-  content
+  class(bill) <- c("billData", class(bill))
+
+  bill
 }
