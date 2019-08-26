@@ -1,13 +1,6 @@
-#' Helper functions
-#'
-#' @name utils
-NULL
+# Helper functions
 
-#' Check for internet connection
-#'
-#' @import assertthat
-#' @importFrom curl has_internet
-#' @rdname utils
+# Check for internet connection
 check_internet <- function(){
   assertthat::assert_that(
     curl::has_internet(),
@@ -16,11 +9,7 @@ check_internet <- function(){
 }
 
 
-#' Check http status
-#'
-#' @import assertthat
-#' @importFrom httr status_code
-#' @rdname utils
+# Check http status
 check_http_status <- function(resp){
   assertthat::assert_that(
     httr::status_code(resp) == 200,
@@ -37,10 +26,7 @@ check_http_status <- function(resp){
 #     )
 # }
 
-#' Check API request errors
-#'
-#' @import assertthat
-#' @rdname utils
+# Check API request errors
 check_API_response <- function(content){
   assertthat::assert_that(
     content$status == "OK",
@@ -48,10 +34,7 @@ check_API_response <- function(content){
   )
 }
 
-#' Check input file class, API return or local path to json
-#'
-#' @import assertthat
-#' @rdname utils
+# Check input file class, API return or local path to json
 check_input_class <- function(input, class){
 
   if (any(class(input) == class)) {

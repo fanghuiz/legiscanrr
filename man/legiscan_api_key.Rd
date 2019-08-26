@@ -7,15 +7,19 @@
 legiscan_api_key(set_new = FALSE)
 }
 \arguments{
-\item{set_new}{force setting a new LegiScan API key for the current environment? Default is FALSE.}
+\item{set_new}{Set a new LegiScan API key for the current environment. Default is FALSE.}
 }
 \value{
 atomic character vector containing the LegiScan API key
 }
 \description{
-The API wrapper functions in this package all rely on a LegiScan API
+Get or set the LegiScan API key for the current session. To request for an
+API key from LegiScan, go to \url{https://legiscan.com/legiscan}.
+}
+\details{
+The API wrapper functions in this package will look for a LegiScan API
 key residing in the environment variable \code{LEGISCAN_API_KEY}. Call this
-function at the beginning of a new session to set the key, or enter
-`\code{file.edit("~/.Renviron")}` in the console and edit the file
+function at the beginning of a new session to set the key for the current R session.
+Or enter `\code{file.edit("~/.Renviron")}` in the console and make this edit to the file
 `\code{LEGISCAN_API_KEY = "you_api_key"}` to set key on your local machine.
 }

@@ -2,16 +2,28 @@
 % Please edit documentation in R/parse_bill_progress.R
 \name{parse_bill_progress}
 \alias{parse_bill_progress}
-\title{Parse bill progress}
+\title{Parse bill progress events}
 \usage{
-parse_bill_progress(bill_json)
+parse_bill_progress(bill)
 }
 \arguments{
-\item{bill_json}{Path to bill json file}
+\item{bill}{Path to bill json file or list objected returned from
+\code{\link{get_bill}}}
 }
 \value{
-data.frame
+A data frame of 3 columns.
+For more details, see \href{../articles/parse-json.html#bill-progress}{documentation}.
 }
 \description{
-Import bill json and parse
+Parse bill progress data from local json or API response and return a data frame.
+}
+\details{
+Progress event is represented in numeric id.
+See \href{../articles/lookup_table.html#bill-progress-id}{lookup table} for description.
+}
+\examples{
+HB1 <- system.file("extdata", "bill/HB1.json", package = "legiscanrr")
+HB1 <- parse_bill_progress(HB1)
+str(HB1)
+
 }

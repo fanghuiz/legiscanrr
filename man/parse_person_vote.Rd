@@ -2,7 +2,7 @@
 % Please edit documentation in R/parse_person_vote.R
 \name{parse_person_vote}
 \alias{parse_person_vote}
-\title{Parse individual legislator votinf record}
+\title{Parse individual legislator voting record}
 \usage{
 parse_person_vote(vote_json)
 }
@@ -10,8 +10,16 @@ parse_person_vote(vote_json)
 \item{vote_json}{Path to vote json file}
 }
 \value{
-data.frame
+A data frame of 4 columns.
+For more details, see \href{../articles/parse-json.html#legislator-vote-records}{documentation}.
 }
 \description{
-Import vote json and parse
+Parse individual legislator's vote in each roll call from local json.
+(support for parsing from API response not yet available.)
+}
+\examples{
+vote <- system.file("extdata", "vote/154366.json", package = "legiscanrr")
+vote <- parse_person_vote(vote)
+str(vote)
+
 }

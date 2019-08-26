@@ -1,11 +1,13 @@
-#' Wrapper for getDataset operation
+#' Get dataset archive
 #'
-#' Unzip a single ZIP archive of the requested session dataset.
+#' This is the API wrapper function for the getDataset operation.
+#' It retrieves the ZIP archive of the requested session dataset, then unzip
+#' the content to a specified local directory.
 #'
-#' @param dataset_list Object returned from get_dataset_list()
+#' @param dataset_list List object returned from \code{\link{get_dataset_list}}
 #' @param save_to_dir Local directory to save the unzipped dataset.
-#' Default to working directory "."
-#' @param api_key Your LegiScan API key (see [legiscan_api_key()])
+#' Default to working directory \code{"."}
+#' @param api_key Your LegiScan API key (see \code{\link{legiscan_api_key}})
 #'
 #' @importFrom fs dir_create
 #' @importFrom purrr flatten
@@ -13,10 +15,25 @@
 #' @import httr
 #' @import jsonlite
 #'
+#' @examples
+#' \dontrun{
+#' # One dataset
+#' get_dataset(one_dataset, save_to_dir = "data_json")
+#'
+#' # Multiple datasets. Use walk() to avoid printing NULL to console.
+#' # But lapply() and map() works too
+#' walk(multiple_datasets, get_dataset, save_to_dir = "data_json")
+#' }
+#'
+#' @seealso \code{\link{get_dataset_list}}, \code{\link{legiscan_api_key}},
+#' \href{https://legiscan.com/gaits/documentation/legiscan}{LegiScan API manual}.
+#'
 #' @return NULL. No return value. Dataset will be unzipped to local disk.
 #'
 #' @export
-get_dataset <- function(dataset_list, save_to_dir = ".", api_key = legiscan_api_key()){
+get_dataset <- function(dataset_list,
+                        save_to_dir = ".",
+                        api_key = legiscan_api_key()){
 
   # Create directory to save the dataset
   fs::dir_create(save_to_dir)

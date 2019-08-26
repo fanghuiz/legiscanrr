@@ -1,15 +1,25 @@
-#' Parse bill progress
+#' Parse bill progress events
 #'
-#' Import bill json and parse
+#' Parse bill progress data from local json or API response and return a data frame.
 #'
-#' @param bill Path to bill json file or bill list
+#' Progress event is represented in numeric id.
+#' See \href{../articles/lookup_table.html#bill-progress-id}{lookup table} for description.
+#'
+#' @param bill Path to bill json file or list objected returned from
+#' \code{\link{get_bill}}
 #'
 #' @importFrom jsonlite fromJSON
 #' @importFrom progress progress_bar
 #' @importFrom data.table rbindlist setDF
 #' @importFrom  tibble as_tibble
 #'
-#' @return data.frame
+#' @return A data frame of 3 columns.
+#' For more details, see \href{../articles/parse-json.html#bill-progress}{documentation}.
+#'
+#' @examples
+#' HB1 <- system.file("extdata", "bill/HB1.json", package = "legiscanrr")
+#' HB1 <- parse_bill_progress(HB1)
+#' str(HB1)
 #'
 #' @export
 parse_bill_progress <- function(bill){
@@ -26,10 +36,10 @@ parse_bill_progress <- function(bill){
     pb$tick()
 
     # Check if input is class `bill` or json file
-    input_class <- check_input_class(input_bill, "bill")
+    input_class <- check_input_class(input_bill, "billData")
 
     # If input is list returned from API
-    if (input_class == "bill") {
+    if (input_class == "billData") {
 
         # Extract progress element
         bill_progress <- input_bill[["progress"]]
@@ -56,7 +66,7 @@ parse_bill_progress <- function(bill){
   }
 
   # If input is single bill object
-  if (class(bill)[1] == "bill") {
+  if (class(bill)[1] == "billData") {
     output_df <- extract_progress(bill)
     output_df
   }

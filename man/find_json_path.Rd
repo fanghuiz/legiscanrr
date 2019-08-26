@@ -2,21 +2,34 @@
 % Please edit documentation in R/find_json_path.R
 \name{find_json_path}
 \alias{find_json_path}
-\title{Find paths to local JSON files}
+\title{Find local JSON files}
 \usage{
 find_json_path(base_dir, file_type)
 }
 \arguments{
 \item{base_dir}{Character vector of the directory where the json files are stored locally}
 
-\item{file_type}{Character string. Accepts "bill", "people", "vote", or "text"}
+\item{file_type}{Character. Accepts \code{"bill"}, \code{"people"},
+\code{"vote"}, or \code{"text"}.}
 }
 \value{
-A vector of paths to .json file
+A vector of paths to local json file
 }
 \description{
-Helper function to find local paths to json files before using the
-various parsing functions in this package. Only works if directory structure
-remains the same as XXX after the datasets from LegiScan,
-either via API request or direct download of the bulk export.
+Helper function to find paths to json files saved locally, before using the
+various parsing functions in this package to process the data.
+}
+\details{
+Note: This function determines file type ("bill", "people", "vote", or "text")
+by looking at sub-directories, thus the json files will need to be saved in the
+approriate folder, e.g. bill json files need to be saved as \code{xxx/bill/file.json},
+vote json files will need to be saved as \code{xxx/vote/file.json}.
+This should not be a problem if the files are unzipped directly from LegiScan bulk dataset.
+}
+\examples{
+\dontrun{
+find_json_path(base_dir = "data", "bill")
+find_json_path(base_dir = "data", "vote")
+}
+
 }

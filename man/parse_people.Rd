@@ -2,7 +2,7 @@
 % Please edit documentation in R/parse_people.R
 \name{parse_people}
 \alias{parse_people}
-\title{Parse people JSON files}
+\title{Parse legislator information}
 \usage{
 parse_people(people_json)
 }
@@ -10,8 +10,16 @@ parse_people(people_json)
 \item{people_json}{Path to people json file}
 }
 \value{
-list
+A data frame of 20 columns.
+For more details, see \href{../articles/parse-json.html#legislator-information}{documentation}.
 }
 \description{
-Import people json and parse
+Parse bill sponsor information from local json. (support for parsing from API response
+not yet available.)
+}
+\examples{
+person_8630 <- system.file("extdata", "people/8630.json", package = "legiscanrr")
+person_8630 <- parse_people(person_8630)
+str(person_8630)
+
 }

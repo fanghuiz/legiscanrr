@@ -2,19 +2,24 @@
 % Please edit documentation in R/get_bill.R
 \name{get_bill}
 \alias{get_bill}
-\title{Wrapper for getBill operation}
+\title{Get bill details information}
 \usage{
 get_bill(bill_id, api_key = legiscan_api_key())
 }
 \arguments{
 \item{bill_id}{Identifier for bill}
 
-\item{api_key}{Your LegiScan API key (see [legiscan_api_key()])}
+\item{api_key}{Your LegiScan API key (see \code{\link{legiscan_api_key}})}
 }
 \value{
-List
+A nested list, with \code{bill_id} as the unique identifier.
 }
 \description{
-This operation returns the primary bill detail information including sponsors,
+This is the API wrapper function for the getBill operation.
+It returns the primary bill detail information including sponsors,
 committee references, full history, bill text and roll call information.
+}
+\seealso{
+\code{\link{legiscan_api_key}}, \code{\link{parse_bill}}
+\href{https://legiscan.com/gaits/documentation/legiscan}{LegiScan API manual}.
 }

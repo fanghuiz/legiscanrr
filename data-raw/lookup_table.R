@@ -85,7 +85,6 @@ stateID <- tibble(
                  "Washington D.C.", "US Congress")
 )
 
-
 lookup_table <- list(stateID = stateID,
                      billStatusDict = billStatusDict,
                      billProgressDict = billProgressDict,

@@ -10,8 +10,16 @@ parse_rollcall_vote(vote_json)
 \item{vote_json}{Path to vote json file}
 }
 \value{
-data.frame
+A data frame of 12 columns.
+For more details, see \href{../articles/parse-json.html#roll-call-votes}{documentation}.
 }
 \description{
-Import vote json and parse
+Parse roll call votes for a bill from local json.
+(support for parsing from API response not yet available.)
+}
+\examples{
+vote <- system.file("extdata", "vote/154366.json", package = "legiscanrr")
+vote <- parse_rollcall_vote(vote)
+str(vote)
+
 }

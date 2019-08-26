@@ -2,16 +2,24 @@
 % Please edit documentation in R/parse_bill.R
 \name{parse_bill}
 \alias{parse_bill}
-\title{Parse bill JSON files}
+\title{Parse bill meta-data}
 \usage{
-parse_bill(bill_json)
+parse_bill(bill)
 }
 \arguments{
-\item{bill_json}{Path to bill json file}
+\item{bill}{Path to bill json file or list objected returned from
+\code{\link{get_bill}}}
 }
 \value{
-list
+A data frame of 24 columns.
+For more details, see \href{../articles/parse-json.html#bill-metadata}{documentation}.
 }
 \description{
-Import bill json and parse
+Parse bill meta-data from local json or API response and return a data frame.
+}
+\examples{
+HB1 <- system.file("extdata", "bill/HB1.json", package = "legiscanrr")
+HB1 <- parse_bill(HB1)
+str(HB1)
+
 }

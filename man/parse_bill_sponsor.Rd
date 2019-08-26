@@ -2,16 +2,28 @@
 % Please edit documentation in R/parse_bill_sponsor.R
 \name{parse_bill_sponsor}
 \alias{parse_bill_sponsor}
-\title{Parse bill sponsors}
+\title{Parse bill sponsor information}
 \usage{
-parse_bill_sponsor(bill_json)
+parse_bill_sponsor(bill)
 }
 \arguments{
-\item{bill_json}{Path to bill json file}
+\item{bill}{Path to bill json file or list objected returned from
+\code{\link{get_bill}}}
 }
 \value{
-data.frame
+A data frame of 9 columns.
+For more details, see \href{../articles/parse-json.html#bill-sponsors}{documentation}.
 }
 \description{
-Import bill json and parse
+Parse bill sponsor information from local json or API response and return a data frame.
+}
+\details{
+Sponsor type is represented in numeric id.
+See \href{../articles/lookup_table.html#sponsor-type-id}{lookup table} for description.
+}
+\examples{
+HB1 <- system.file("extdata", "bill/HB1.json", package = "legiscanrr")
+HB1 <- parse_bill_sponsor(HB1)
+str(HB1)
+
 }

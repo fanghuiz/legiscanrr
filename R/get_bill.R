@@ -1,14 +1,18 @@
-#' Wrapper for getBill operation
+#' Get bill details information
 #'
-#' This operation returns the primary bill detail information including sponsors,
+#' This is the API wrapper function for the getBill operation.
+#' It returns the primary bill detail information including sponsors,
 #' committee references, full history, bill text and roll call information.
 #'
 #' @param bill_id Identifier for bill
-#' @param api_key Your LegiScan API key (see [legiscan_api_key()])
+#' @param api_key Your LegiScan API key (see \code{\link{legiscan_api_key}})
 #'
 #' @import httr
 #'
-#' @return List
+#' @seealso \code{\link{legiscan_api_key}}, \code{\link{parse_bill}}
+#' \href{https://legiscan.com/gaits/documentation/legiscan}{LegiScan API manual}.
+#'
+#' @return A nested list, with \code{bill_id} as the unique identifier.
 #'
 #' @export
 get_bill <- function(bill_id, api_key = legiscan_api_key()){

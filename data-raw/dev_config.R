@@ -46,23 +46,14 @@ use_mit_license(name = "Fanghui Zhao")
 # Get the dependencies
 use_package("httr")
 use_package("assertthat")
-
-# use_package("jsonlite")
-# use_package("tibble")
-
-
-# use_package("readtext")
-#
-# use_package("curl")
-# use_package("attempt")
-# use_package("purrr")
-# use_package("dplyr")
-# use_package("data.table")
-# use_package("magrittr")
-# use_package("fs")
-# use_package("progress")
-# use_package("tidyr")
-# use_package("checkmate")
+use_package("jsonlite")
+use_package("tibble")
+use_package("readtext")
+use_package("curl")
+use_package("purrr")
+use_package("data.table")
+use_package("fs")
+use_package("progress")
 
 
 # Clean your description

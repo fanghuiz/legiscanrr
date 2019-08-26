@@ -1,6 +1,7 @@
 #' Parse roll call votes
 #'
-#' Import vote json and parse
+#' Parse roll call votes for a bill from local json.
+#' (support for parsing from API response not yet available.)
 #'
 #' @param vote_json Path to vote json file
 #'
@@ -10,7 +11,13 @@
 #' @importFrom data.table rbindlist setDF
 #' @importFrom  tibble as_tibble
 #'
-#' @return data.frame
+#' @examples
+#' vote <- system.file("extdata", "vote/154366.json", package = "legiscanrr")
+#' vote <- parse_rollcall_vote(vote)
+#' str(vote)
+#'
+#' @return A data frame of 12 columns.
+#' For more details, see \href{../articles/parse-json.html#roll-call-votes}{documentation}.
 #'
 #' @export
 parse_rollcall_vote <- function(vote_json){
@@ -57,6 +64,7 @@ parse_rollcall_vote <- function(vote_json){
   # Bind list into flat data frame
   output_df <- data.table::rbindlist(output_list, fill = TRUE)
   output_df  <- tibble::as_tibble(data.table::setDF(output_df))
+  output_df
   # End of function call
 }
 

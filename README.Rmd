@@ -22,10 +22,12 @@ knitr::opts_chunk$set(
 
 The goal of legiscanrr is to provide tools in R to easily interact with the [LegiScan API](https://legiscan.com/legiscan). You can use the API to retrieve information about legislations in US states and Congress, such as bill details, sponsors, full bill texts, roll call records and more. 
 
-Two main groups of functions:
+This package contains two main groups of functions:
 
-* wrapper functions for LegiScan APi operations to xxx
-* data processing functions to parse JSON files downloaded locally
+* Wrapper functions for LegiScan APi operations to retrieve information from LegiScan API.
+    * API key from LegiScan is required. Register for a key [here](https://legiscan.com/legiscan)
+* Data processing functions to parse information such as bill metadata, bill sponsor, roll call votes, from the JSON files retrieved via API or [direct download](https://legiscan.com/datasets)
+    * See [documentation page](articles/parse-json.html) for more details on the types of information we can extract.
 
 ## Installation
 
@@ -38,13 +40,37 @@ devtools::install_github("fanghuiz/legiscanrr")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example, eval=FALSE}
+```{r example}
 library(legiscanrr)
-## basic example code
 ```
 
+Get bill details via API using `get_bill()`
 
-## To do 
+```{r}
+bill_example <- get_bill(bill_id = 230086)
+
+head(bill_example)
+```
+
+Extract bill metadata using `parse_bill()`
+
+```{r}
+bill_meta <- parse_bill(bill_example)
+
+str(bill_meta)
+```
+
+Extract bill progress information using `parse_bill_progress()`
+
+```{r}
+parse_bill_progress(bill_example)
+```
+
+Extract information about sponsors for this bill using `parse_bill_sponsor()`
+
+```{r}
+sponsor <- parse_bill_sponsor(bill_example)
+
+str(sponsor)
+```
 

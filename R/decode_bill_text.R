@@ -1,15 +1,23 @@
-#' Decode bill text from base64 to plain text
+#' Decode based64 encoded bill text
 #'
-#' Return a list containing bill text in a character string, and meta data
+#' Full text of bill documents returned from LegiScan API is encoded in base64.
+#' This function detects the document mime type, decodes the texts and turn it
+#' as a character vector.
 #'
-#' @param bill_text object returned from get_bill_text()
+#' @param bill_text List object or json file containing bill text details,
+#' returned from \code{\link{get_bill_text}}
 #'
 #' @import readtext
 #' @importFrom tibble as_tibble
 #' @importFrom jsonlite base64_dec fromJSON
 #' @importFrom assertthat has_extension
 #'
-#' @return data frame of 10 columns
+#' @return  A data frame of 10 columns, containing all the information
+#' returned from API query, with the decoded text attached.
+#' See \href{../articles/decode-bill-text.html}{decode bill text vignette} for more.
+#'
+#' @seealso \code{\link{get_bill_text}}.
+#' Text decoding utilizes R package \href{https://readtext.quanteda.io/}{readtext}.
 #'
 #' @export
 decode_bill_text <- function(bill_text){
