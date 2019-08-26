@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper for getDatasetList operation — get_dataset_list • legiscanrr</title>
+<title>Get list of available datasets — get_dataset_list • legiscanrr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Wrapper for getDatasetList operation — get_dataset_list" />
+<meta property="og:title" content="Get list of available datasets — get_dataset_list" />
 
-<meta property="og:description" content="Returns a list of available datasets, with optional state and year filtering" />
+<meta property="og:description" content="This is the API wrapper function for the getDatasetList operation.
+It returns a list of available datasets, with optional state
+and/or year filtering." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -72,15 +74,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -91,10 +84,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -119,14 +115,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper for getDatasetList operation</h1>
+    <h1>Get list of available datasets</h1>
     <small class="dont-index">Source: <a href='https://github.com/fanghuiz/legiscanrr/blob/master/R/get_dataset_list.R'><code>R/get_dataset_list.R</code></a></small>
     <div class="hidden name"><code>get_dataset_list.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Returns a list of available datasets, with optional state and year filtering</p>
+    <p>This is the API wrapper function for the getDatasetList operation.
+It returns a list of available datasets, with optional <code>state</code>
+and/or <code>year</code> filtering.</p>
     
     </div>
 
@@ -146,13 +144,30 @@
     </tr>
     <tr>
       <th>api_key</th>
-      <td><p>Your LegiScan API key (see [legiscan_api_key()])</p></td>
+      <td><p>Your LegiScan API key (see <code><a href='legiscan_api_key.html'>legiscan_api_key</a></code>)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame</p>
+    <p>List of dataset information.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>This opertation does not return the dataset itself. Rather, it gives the
+dataset meta-data, and the <code>session_id</code> and <code>access_key</code> required
+for the <code><a href='get_dataset.html'>get_dataset</a></code> function to retrieve the dataset.</p>
+<ul>
+<li><p>If neither <code>state</code> nor <code>year</code> is given, returns a full list of all available dataset</p></li>
+<li><p>If only <code>state</code> is given, returns datasets for that state from all available years</p></li>
+<li><p>If only <code>year</code> is given, returns datasets for that year from all 50 states,
+plus DC and Congress.</p></li>
+</ul>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='get_dataset.html'>get_dataset</a></code>, <code><a href='legiscan_api_key.html'>legiscan_api_key</a></code>,
+<a href='https://legiscan.com/gaits/documentation/legiscan'>LegiScan API manual</a></p></div>
     
 
   </div>
@@ -162,6 +177,10 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

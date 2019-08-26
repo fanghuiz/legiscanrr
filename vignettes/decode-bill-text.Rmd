@@ -1,0 +1,71 @@
+---
+title: "Retrieve bill full text"
+# date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Retrieve bill full text}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE
+)
+```
+
+
+```{r}
+library(legiscanrr)
+```
+
+
+## From API
+
+Find the identifier for bill text document `doc_id` we want to retrieve and pass it to `get_bill_text()`. We will get back a list containing details about the text document, with the element `doc` containing the document itself in base64 encoding.
+
+```{r}
+doc_1877162 <- get_bill_text(doc_id = 1877162)
+
+doc_1877162
+```
+
+To retrieve the text from the base64 encoded document, we pass this list to `decode_bill_text()`. This will 1) transform the input list into a data frame, and 2) attach the decoded text as an additional column `text_docoded`.
+
+```{r}
+text_decode_1 <- decode_bill_text(doc_1877162)
+str(text_decode_1)
+```
+
+Decoded text looks like this:
+
+```{r results='asis'}
+text_decode_1$text_decoded
+```
+
+
+## From local json
+
+If we have saved the API response from `get_bill_text()` in json format locally, we can decode the text by passing in the paths to the .json files. 
+
+If we save the files under sub-directory `text`, then we can use `find_json_path()` to help us with the search.
+
+```{r}
+text_paths <- find_json_path(base_dir = "../inst/extdata", file_type = "text")
+
+text_paths
+```
+
+Then pass the file path directly to `decode_bill_text()`, which will perform the importing and decoding accordingly. 
+
+```{r}
+text_decode_2 <- decode_bill_text(text_paths[3])
+str(text_decode_2)
+```
+
+```{r results='asis'}
+text_decode_2$text_decoded
+```
+

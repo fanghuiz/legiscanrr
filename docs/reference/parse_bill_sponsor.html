@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Parse bill sponsors — parse_bill_sponsor • legiscanrr</title>
+<title>Parse bill sponsor information — parse_bill_sponsor • legiscanrr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,9 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Parse bill sponsors — parse_bill_sponsor" />
+<meta property="og:title" content="Parse bill sponsor information — parse_bill_sponsor" />
 
-<meta property="og:description" content="Import bill json and parse" />
+<meta property="og:description" content="Parse bill sponsor information from local json or API response and return a data frame." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -72,15 +72,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -91,10 +82,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -119,33 +113,54 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Parse bill sponsors</h1>
+    <h1>Parse bill sponsor information</h1>
     <small class="dont-index">Source: <a href='https://github.com/fanghuiz/legiscanrr/blob/master/R/parse_bill_sponsor.R'><code>R/parse_bill_sponsor.R</code></a></small>
     <div class="hidden name"><code>parse_bill_sponsor.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Import bill json and parse</p>
+    <p>Parse bill sponsor information from local json or API response and return a data frame.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>parse_bill_sponsor</span>(<span class='no'>bill_json</span>)</pre>
+    <pre class="usage"><span class='fu'>parse_bill_sponsor</span>(<span class='no'>bill</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>bill_json</th>
-      <td><p>Path to bill json file</p></td>
+      <th>bill</th>
+      <td><p>Path to bill json file or list objected returned from
+<code><a href='get_bill.html'>get_bill</a></code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame</p>
+    <p>A data frame of 9 columns.
+For more details, see <a href='../articles/parse-json.html#bill-sponsors'>documentation</a>.</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Sponsor type is represented in numeric id.
+See <a href='../articles/lookup_table.html#sponsor-type-id'>lookup table</a> for description.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>HB1</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"bill/HB1.json"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"legiscanrr"</span>)
+<span class='no'>HB1</span> <span class='kw'>&lt;-</span> <span class='fu'>parse_bill_sponsor</span>(<span class='no'>HB1</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>HB1</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	5 obs. of  9 variables:
+#&gt;  $ people_id        : int  6033 6034 6042 6060 12081
+#&gt;  $ party_id         : int  2 2 2 2 2
+#&gt;  $ party            : chr  "R" "R" "R" "R" ...
+#&gt;  $ name             : chr  "Carl Gatto" "Robert Lynn" "Craig Johnson" "Peggy Wilson" ...
+#&gt;  $ sponsor_type_id  : int  0 0 0 0 0
+#&gt;  $ sponsor_order    : int  0 0 0 0 0
+#&gt;  $ committee_sponsor: int  0 0 0 0 0
+#&gt;  $ committee_id     : chr  "0" "0" "0" "0" ...
+#&gt;  $ bill_id          : int  230084 230084 230084 230084 230084</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,7 +168,11 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+
+      <li><a href="#details">Details</a></li>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

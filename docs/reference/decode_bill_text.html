@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Decode bill text from base64 to plain text — decode_bill_text • legiscanrr</title>
+<title>Decode based64 encoded bill text — decode_bill_text • legiscanrr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Decode bill text from base64 to plain text — decode_bill_text" />
+<meta property="og:title" content="Decode based64 encoded bill text — decode_bill_text" />
 
-<meta property="og:description" content="Return a list containing bill text in a character string, and meta data" />
+<meta property="og:description" content="Full text of bill documents returned from LegiScan API is encoded in base64.
+This function detects the document mime type, decodes the texts and turn it
+as a character vector." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -72,15 +74,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -91,10 +84,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -119,14 +115,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Decode bill text from base64 to plain text</h1>
+    <h1>Decode based64 encoded bill text</h1>
     <small class="dont-index">Source: <a href='https://github.com/fanghuiz/legiscanrr/blob/master/R/decode_bill_text.R'><code>R/decode_bill_text.R</code></a></small>
     <div class="hidden name"><code>decode_bill_text.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Return a list containing bill text in a character string, and meta data</p>
+    <p>Full text of bill documents returned from LegiScan API is encoded in base64.
+This function detects the document mime type, decodes the texts and turn it
+as a character vector.</p>
     
     </div>
 
@@ -137,13 +135,21 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>bill_text</th>
-      <td><p>object returned from get_bill_text()</p></td>
+      <td><p>List object or json file containing bill text details,
+returned from <code><a href='get_bill_text.html'>get_bill_text</a></code></p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data frame of 10 columns</p>
+    <p>A data frame of 10 columns, containing all the information
+returned from API query, with the decoded text attached.
+See <a href='../articles/decode-bill-text.html'>decode bill text vignette</a> for more.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='get_bill_text.html'>get_bill_text</a></code>.
+Text decoding utilizes R package <a href='https://readtext.quanteda.io/'>readtext</a>.</p></div>
     
 
   </div>
@@ -153,6 +159,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

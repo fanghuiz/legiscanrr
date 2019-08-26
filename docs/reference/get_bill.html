@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper for getBill operation — get_bill • legiscanrr</title>
+<title>Get bill details information — get_bill • legiscanrr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Wrapper for getBill operation — get_bill" />
+<meta property="og:title" content="Get bill details information — get_bill" />
 
-<meta property="og:description" content="This operation returns the primary bill detail information including sponsors,
+<meta property="og:description" content="This is the API wrapper function for the getBill operation.
+It returns the primary bill detail information including sponsors,
 committee references, full history, bill text and roll call information." />
 <meta name="twitter:card" content="summary" />
 
@@ -73,15 +74,6 @@ committee references, full history, bill text and roll call information." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -92,10 +84,13 @@ committee references, full history, bill text and roll call information." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -120,14 +115,15 @@ committee references, full history, bill text and roll call information." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper for getBill operation</h1>
+    <h1>Get bill details information</h1>
     <small class="dont-index">Source: <a href='https://github.com/fanghuiz/legiscanrr/blob/master/R/get_bill.R'><code>R/get_bill.R</code></a></small>
     <div class="hidden name"><code>get_bill.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This operation returns the primary bill detail information including sponsors,
+    <p>This is the API wrapper function for the getBill operation.
+It returns the primary bill detail information including sponsors,
 committee references, full history, bill text and roll call information.</p>
     
     </div>
@@ -143,13 +139,18 @@ committee references, full history, bill text and roll call information.</p>
     </tr>
     <tr>
       <th>api_key</th>
-      <td><p>Your LegiScan API key (see [legiscan_api_key()])</p></td>
+      <td><p>Your LegiScan API key (see <code><a href='legiscan_api_key.html'>legiscan_api_key</a></code>)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>List</p>
+    <p>A nested list, with <code>bill_id</code> as the unique identifier.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='legiscan_api_key.html'>legiscan_api_key</a></code>, <code><a href='parse_bill.html'>parse_bill</a></code>
+<a href='https://legiscan.com/gaits/documentation/legiscan'>LegiScan API manual</a>.</p></div>
     
 
   </div>
@@ -159,6 +160,8 @@ committee references, full history, bill text and roll call information.</p>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>

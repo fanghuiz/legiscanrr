@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Parse people JSON files — parse_people • legiscanrr</title>
+<title>Parse legislator information — parse_people • legiscanrr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,10 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Parse people JSON files — parse_people" />
+<meta property="og:title" content="Parse legislator information — parse_people" />
 
-<meta property="og:description" content="Import people json and parse" />
+<meta property="og:description" content="Parse bill sponsor information from local json. (support for parsing from API response
+not yet available.)" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -72,15 +73,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -91,10 +83,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -119,14 +114,15 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Parse people JSON files</h1>
+    <h1>Parse legislator information</h1>
     <small class="dont-index">Source: <a href='https://github.com/fanghuiz/legiscanrr/blob/master/R/parse_people.R'><code>R/parse_people.R</code></a></small>
     <div class="hidden name"><code>parse_people.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Import people json and parse</p>
+    <p>Parse bill sponsor information from local json. (support for parsing from API response
+not yet available.)</p>
     
     </div>
 
@@ -143,9 +139,35 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list</p>
+    <p>A data frame of 20 columns.
+For more details, see <a href='../articles/parse-json.html#legislator-information'>documentation</a>.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>person_8630</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"people/8630.json"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"legiscanrr"</span>)
+<span class='no'>person_8630</span> <span class='kw'>&lt;-</span> <span class='fu'>parse_people</span>(<span class='no'>person_8630</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>person_8630</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1 obs. of  20 variables:
+#&gt;  $ people_id        : int 8630
+#&gt;  $ person_hash      : chr "w9wdpz37"
+#&gt;  $ state_id         : int 50
+#&gt;  $ party_id         : chr "0"
+#&gt;  $ party            : chr ""
+#&gt;  $ role_id          : int 3
+#&gt;  $ role             : chr "Jnt"
+#&gt;  $ name             : chr "Agriculture, State and Public Lands and Water Resources"
+#&gt;  $ first_name       : chr ""
+#&gt;  $ middle_name      : chr ""
+#&gt;  $ last_name        : chr ""
+#&gt;  $ suffix           : chr ""
+#&gt;  $ nickname         : chr ""
+#&gt;  $ district         : chr ""
+#&gt;  $ ftm_eid          : chr "0"
+#&gt;  $ votesmart_id     : int 0
+#&gt;  $ opensecrets_id   : chr ""
+#&gt;  $ ballotpedia      : chr ""
+#&gt;  $ committee_sponsor: int 1
+#&gt;  $ committee_id     : int 1631</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,7 +175,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

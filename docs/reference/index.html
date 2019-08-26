@@ -69,15 +69,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -88,10 +79,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -139,37 +133,37 @@
         <td>
           <p><code><a href="get_bill.html">get_bill()</a></code> </p>
         </td>
-        <td><p>Wrapper for getBill operation</p></td>
+        <td><p>Get bill details information</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="get_bill_masterlist.html">get_bill_masterlist()</a></code> </p>
         </td>
-        <td><p>Wrapper for getMasterList operation</p></td>
+        <td><p>Get master list of bills in a session</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="get_bill_text.html">get_bill_text()</a></code> </p>
         </td>
-        <td><p>Wrapper for getBillText operation</p></td>
+        <td><p>Get bill full text</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="get_dataset.html">get_dataset()</a></code> </p>
         </td>
-        <td><p>Wrapper for getDataset operation</p></td>
+        <td><p>Get dataset archive</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="get_dataset_list.html">get_dataset_list()</a></code> </p>
         </td>
-        <td><p>Wrapper for getDatasetList operation</p></td>
+        <td><p>Get list of available datasets</p></td>
       </tr>
     </tbody><tbody>
       <tr>
         <th colspan="2">
           <h2 id="section-data-processing-functions" class="hasAnchor"><a href="#section-data-processing-functions" class="anchor"></a>Data processing functions</h2>
-          <p class="section-desc"><p>Parsing the JSON files, returns flat dataframes</p></p>
+          <p class="section-desc"><p>Functions to parse the JSON files or objects returned from API functions</p></p>
         </th>
       </tr>
       <tr>
@@ -177,31 +171,31 @@
         <td>
           <p><code><a href="parse_bill.html">parse_bill()</a></code> </p>
         </td>
-        <td><p>Parse bill JSON files</p></td>
+        <td><p>Parse bill meta-data</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="parse_bill_progress.html">parse_bill_progress()</a></code> </p>
         </td>
-        <td><p>Parse bill progress</p></td>
+        <td><p>Parse bill progress events</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="parse_bill_sponsor.html">parse_bill_sponsor()</a></code> </p>
         </td>
-        <td><p>Parse bill sponsors</p></td>
+        <td><p>Parse bill sponsor information</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="parse_people.html">parse_people()</a></code> </p>
         </td>
-        <td><p>Parse people JSON files</p></td>
+        <td><p>Parse legislator information</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="parse_person_vote.html">parse_person_vote()</a></code> </p>
         </td>
-        <td><p>Parse individual legislator votinf record</p></td>
+        <td><p>Parse individual legislator voting record</p></td>
       </tr><tr>
         
         <td>
@@ -221,13 +215,13 @@
         <td>
           <p><code><a href="decode_bill_text.html">decode_bill_text()</a></code> </p>
         </td>
-        <td><p>Decode bill text from base64 to plain text</p></td>
+        <td><p>Decode based64 encoded bill text</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="find_json_path.html">find_json_path()</a></code> </p>
         </td>
-        <td><p>Find paths to local JSON files</p></td>
+        <td><p>Find local JSON files</p></td>
       </tr><tr>
         
         <td>

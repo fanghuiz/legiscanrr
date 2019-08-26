@@ -1,0 +1,66 @@
+---
+title: "Lookup table"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Lookup table}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  warning = FALSE
+)
+```
+
+```{r setup}
+library(legiscanrr)
+```
+
+```{r}
+names(lookup_table)
+```
+
+## States ID
+
+```{r}
+head(lookup_table$stateID)
+```
+
+```{r}
+tail(lookup_table$stateID)
+```
+
+
+## Bill status ID
+
+```{r}
+knitr::kable(lookup_table$billStatusDict)
+```
+
+## Bill progress ID
+
+```{r}
+knitr::kable(lookup_table$billProgressDict)
+```
+
+## Bill type ID
+
+```{r}
+knitr::kable(lookup_table$billTypeDict)
+```
+
+## Bill text type ID
+
+```{r}
+knitr::kable(lookup_table$billTextTypeDict)
+```
+
+## Sponsor type ID
+
+```{r}
+knitr::kable(lookup_table$billSponsorDict)
+```
+

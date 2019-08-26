@@ -34,7 +34,8 @@
   
 <meta property="og:title" content="Lookup table — lookup_table" />
 
-<meta property="og:description" content="Static values. Can be used as reference, or be used to join with parsed json data." />
+<meta property="og:description" content="Numerica value and corresponding description.
+Can be used as reference, or be used to join with parsed json data." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -72,15 +73,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -91,10 +83,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -126,7 +121,8 @@
 
     <div class="ref-description">
     
-    <p>Static values. Can be used as reference, or be used to join with parsed json data.</p>
+    <p>Numerica value and corresponding description.
+Can be used as reference, or be used to join with parsed json data.</p>
     
     </div>
 
@@ -134,13 +130,14 @@
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A list with 6 elements, each a data.frame:</p><dl class='dl-horizontal'>
-  <dt><code>stateID</code></dt><dd><p>stateID</p></dd>
-  <dt><code>billStatus</code></dt><dd><p>probability of death at age <code>x</code></p></dd>
-  <dt><code>billProgress</code></dt><dd><p>number of survivors, of birth cohort of 100,000, at next integral age</p></dd>
-  <dt><code>billType</code></dt><dd><p>number of deaths that would occur between integral ages</p></dd>
-  <dt><code>billTextType</code></dt><dd><p>Number of person-years lived between <code>x</code> and <code>x+1</code></p></dd>
-  <dt><code>mimeType</code></dt><dd><p>Total number of person-years lived beyond age <code>x</code></p></dd>
+    <p>A list with 6 elements, each a data.frame with numeric id and corresponding description</p><dl class='dl-horizontal'>
+  <dt><code>stateID</code></dt><dd><p>State abbreviation and name</p></dd>
+  <dt><code>billStatusDict</code></dt><dd><p>Bill final status</p></dd>
+  <dt><code>billSponsorDict</code></dt><dd><p>Sponsor type</p></dd>
+  <dt><code>billProgressDict</code></dt><dd><p>Important events of bill progress</p></dd>
+  <dt><code>billTypeDict</code></dt><dd><p>Type of bill</p></dd>
+  <dt><code>billTextTypeDict</code></dt><dd><p>Type of bill text document</p></dd>
+  <dt><code>mimeTypeDict</code></dt><dd><p>Bill text document mime type</p></dd>
 </dl>
     <p>For further details, see LegiScan API documentation <a href='https://legiscan.com/gaits/documentation/legiscan'>https://legiscan.com/gaits/documentation/legiscan</a></p>
     

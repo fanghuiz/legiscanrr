@@ -34,11 +34,8 @@
   
 <meta property="og:title" content="Get or set LEGISCAN_API_KEY value — legiscan_api_key" />
 
-<meta property="og:description" content="The API wrapper functions in this package all rely on a LegiScan API
-key residing in the environment variable LEGISCAN_API_KEY. Call this
-function at the beginning of a new session to set the key, or enter
-`file.edit(&quot;~/.Renviron&quot;)` in the console and edit the file
-`LEGISCAN_API_KEY = &quot;you_api_key&quot;` to set key on your local machine." />
+<meta property="og:description" content="Get or set the LegiScan API key for the current session. To request for an
+API key from LegiScan, go to https://legiscan.com/legiscan." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -76,15 +73,6 @@ function at the beginning of a new session to set the key, or enter
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -95,10 +83,13 @@ function at the beginning of a new session to set the key, or enter
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -130,11 +121,8 @@ function at the beginning of a new session to set the key, or enter
 
     <div class="ref-description">
     
-    <p>The API wrapper functions in this package all rely on a LegiScan API
-key residing in the environment variable <code>LEGISCAN_API_KEY</code>. Call this
-function at the beginning of a new session to set the key, or enter
-`<code><a href='https://www.rdocumentation.org/packages/utils/topics/file.edit'>file.edit("~/.Renviron")</a></code>` in the console and edit the file
-`<code>LEGISCAN_API_KEY = "you_api_key"</code>` to set key on your local machine.</p>
+    <p>Get or set the LegiScan API key for the current session. To request for an
+API key from LegiScan, go to <a href='https://legiscan.com/legiscan'>https://legiscan.com/legiscan</a>.</p>
     
     </div>
 
@@ -145,13 +133,21 @@ function at the beginning of a new session to set the key, or enter
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>set_new</th>
-      <td><p>force setting a new LegiScan API key for the current environment? Default is FALSE.</p></td>
+      <td><p>Set a new LegiScan API key for the current environment. Default is FALSE.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>atomic character vector containing the LegiScan API key</p>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The API wrapper functions in this package will look for a LegiScan API
+key residing in the environment variable <code>LEGISCAN_API_KEY</code>. Call this
+function at the beginning of a new session to set the key for the current R session.
+Or enter `<code><a href='https://www.rdocumentation.org/packages/utils/topics/file.edit'>file.edit("~/.Renviron")</a></code>` in the console and make this edit to the file
+`<code>LEGISCAN_API_KEY = "you_api_key"</code>` to set key on your local machine.</p>
     
 
   </div>
@@ -161,6 +157,8 @@ function at the beginning of a new session to set the key, or enter
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#details">Details</a></li>
           </ul>
 
   </div>

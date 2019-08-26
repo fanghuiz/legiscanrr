@@ -34,7 +34,8 @@
   
 <meta property="og:title" content="Parse roll call votes — parse_rollcall_vote" />
 
-<meta property="og:description" content="Import vote json and parse" />
+<meta property="og:description" content="Parse roll call votes for a bill from local json.
+(support for parsing from API response not yet available.)" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -72,15 +73,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -91,10 +83,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -126,7 +121,8 @@
 
     <div class="ref-description">
     
-    <p>Import vote json and parse</p>
+    <p>Parse roll call votes for a bill from local json.
+(support for parsing from API response not yet available.)</p>
     
     </div>
 
@@ -143,9 +139,27 @@
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame</p>
+    <p>A data frame of 12 columns.
+For more details, see <a href='../articles/parse-json.html#roll-call-votes'>documentation</a>.</p>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='no'>vote</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"vote/154366.json"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"legiscanrr"</span>)
+<span class='no'>vote</span> <span class='kw'>&lt;-</span> <span class='fu'>parse_rollcall_vote</span>(<span class='no'>vote</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/str'>str</a></span>(<span class='no'>vote</span>)</div><div class='output co'>#&gt; Classes ‘tbl_df’, ‘tbl’ and 'data.frame':	1 obs. of  12 variables:
+#&gt;  $ roll_call_id: int 154366
+#&gt;  $ bill_id     : int 395975
+#&gt;  $ date        : chr "2012-02-14"
+#&gt;  $ desc        : chr "S Introduced and Referred to S10"
+#&gt;  $ yea         : int 30
+#&gt;  $ nay         : int 0
+#&gt;  $ nv          : int 0
+#&gt;  $ absent      : int 0
+#&gt;  $ total       : int 30
+#&gt;  $ passed      : int 1
+#&gt;  $ chamber     : chr "S"
+#&gt;  $ chamber_id  : int 102</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,7 +167,9 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

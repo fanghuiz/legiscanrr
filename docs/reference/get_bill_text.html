@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper for getBillText operation — get_bill_text • legiscanrr</title>
+<title>Get bill full text — get_bill_text • legiscanrr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -32,9 +32,11 @@
 
   <link href="../extra.css" rel="stylesheet">
   
-<meta property="og:title" content="Wrapper for getBillText operation — get_bill_text" />
+<meta property="og:title" content="Get bill full text — get_bill_text" />
 
-<meta property="og:description" content="Return bill text json" />
+<meta property="og:description" content="This is the API wrapper function for the getBillText operation.
+It returns a copy of base64 encoded bill text document, along with other
+information such as document date, type, MIME type etc." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -72,15 +74,6 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="../articles/legiscanrr.html">Get started</a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
@@ -91,10 +84,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/howto-bill-text.html">How to Get Bill Full Text</a>
+      <a href="../articles/parse-json.html">Documentation of parsed JSON files</a>
     </li>
     <li>
-      <a href="../articles/howto-parse-json.html">How to parsing downloaded JSON files</a>
+      <a href="../articles/decode-bill-text.html">Retrieve bill full text</a>
+    </li>
+    <li>
+      <a href="../articles/lookup-table.html">Lookup table</a>
     </li>
   </ul>
 </li>
@@ -119,14 +115,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper for getBillText operation</h1>
+    <h1>Get bill full text</h1>
     <small class="dont-index">Source: <a href='https://github.com/fanghuiz/legiscanrr/blob/master/R/get_bill_text.R'><code>R/get_bill_text.R</code></a></small>
     <div class="hidden name"><code>get_bill_text.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Return bill text json</p>
+    <p>This is the API wrapper function for the getBillText operation.
+It returns a copy of base64 encoded bill text document, along with other
+information such as document date, type, MIME type etc.</p>
     
     </div>
 
@@ -141,13 +139,20 @@
     </tr>
     <tr>
       <th>api_key</th>
-      <td><p>Your LegiScan API key (see [legiscan_api_key()])</p></td>
+      <td><p>Your LegiScan API key (see <code><a href='legiscan_api_key.html'>legiscan_api_key</a></code>)</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>data.frame</p>
+    <p>A list, with <code>doc_id</code> as the unique identifier.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='legiscan_api_key.html'>legiscan_api_key</a></code>,
+<a href='https://legiscan.com/gaits/documentation/legiscan'>LegiScan API manual</a>.
+For decoding the base64 encoded document, see <code><a href='decode_bill_text.html'>decode_bill_text</a></code>
+and the related <a href='../articles/decode-bill-text.html'>vignette</a>.</p></div>
     
 
   </div>
@@ -157,6 +162,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
           </ul>
 
   </div>
