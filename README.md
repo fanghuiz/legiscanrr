@@ -152,3 +152,9 @@ str(sponsor)
 #>  $ bill_id          : int  230086 230086 230086 230086 230086 230086 230086 230086 230086 230086 ...
 #>  - attr(*, ".internal.selfref")=<externalptr>
 ```
+
+## Data structure
+
+Dataset structure and keys for joining different tables.
+
+![](https://fanghuiz.github.io/legiscanrr/articles/img/dataset_ERD.png)
