@@ -33,7 +33,9 @@ decode_bill_text <- function(bill_text){
     input_bill_text
   }
 
-  #input_bill_text <- bill_text
+  if (length(input_bill_text[["text"]]) > 0){
+    input_bill_text <- input_bill_text[['text']]
+  }
 
   # Find correct file extension
   if(input_bill_text[["mime"]] == "text/html"){

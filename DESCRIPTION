@@ -21,6 +21,7 @@ Imports:
     readtext,
     curl,
     purrr,
+    dplyr,
     data.table,
     fs,
     progress
