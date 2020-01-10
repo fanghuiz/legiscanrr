@@ -26,6 +26,8 @@ This package contains two main groups of functions:
     download](https://legiscan.com/datasets)
       - See [documentation page](articles/parse-json.html) for more
         details on the types of information we can extract.
+        
+For full reference of the package, see https://fanghuiz.github.io/legiscanrr/        
 
 ## Installation
 
@@ -150,3 +152,9 @@ str(sponsor)
 #>  $ bill_id          : int  230086 230086 230086 230086 230086 230086 230086 230086 230086 230086 ...
 #>  - attr(*, ".internal.selfref")=<externalptr>
 ```
+
+## Data structure
+
+Dataset structure and keys for joining different tables.
+
+![](https://fanghuiz.github.io/legiscanrr/articles/img/dataset_ERD.png)
